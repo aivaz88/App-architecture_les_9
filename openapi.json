@@ -1,0 +1,399 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "API для аренды в облачном сервисе",
+    "version": "0.0.1"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:8080/api/v1",
+      "description": "Localhost"
+    }
+  ],
+  "paths": {
+    "/clients": {
+      "get": {
+        "summary": "Метод получения списка клиентов",
+        "tags": [
+          "Clients"
+        ],
+        "operationId": "getAllClients",
+        "responses": {
+          "200": {
+            "description": "Успешный ответ со списком клиентов",
+            "content": {
+              "adplication/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Clients"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Все остальное",
+            "content": {
+              "adplication/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Метод создания нового клиента",
+        "tags": [
+          "Clients"
+        ],
+        "operationId": "createClient",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "adplication/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Client"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Успешный ответ по созданию пользователя",
+            "content": {
+              "adplication/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Client"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Все остальное",
+            "content": {
+              "adplication/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "summary": "Метод изменения данных клиента",
+        "tags": [
+          "Clients"
+        ],
+        "operationId": "editClientById",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "adplication/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Client"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Успешный ответ по изменению данных пользователя",
+            "content": {
+              "adplication/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Client"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Все остальное",
+            "content": {
+              "adplication/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/clients/{idClient}": {
+      "delete": {
+        "summary": "Удаление клиента по id",
+        "operationId": "deleteClientById",
+        "tags": [
+          "Clients"
+        ],
+        "parameters": [
+          {
+            "name": "idClient",
+            "in": "path",
+            "required": true,
+            "description": "id Клиента",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Успешное удаление клиента",
+            "content": {
+              "adplication/json": {}
+            }
+          },
+          "default": {
+            "description": "Все остальное",
+            "content": {
+              "adplication/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/cloud": {
+      "get": {
+        "summary": "Метод получения списка серверов",
+        "tags": [
+          "Clouds"
+        ],
+        "operationId": "getAllClouds",
+        "responses": {
+          "200": {
+            "description": "Успешный ответ со списком серверов",
+            "content": {
+              "adplication/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Clouds"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Все остальное",
+            "content": {
+              "adplication/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Метод создания нового сервера",
+        "tags": [
+          "Clouds"
+        ],
+        "operationId": "createCloud",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "adplication/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Cloud"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Успешный ответ по созданию нового сервера",
+            "content": {
+              "adplication/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Cloud"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Все остальное",
+            "content": {
+              "adplication/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "summary": "Метод изменения данных сервера",
+        "tags": [
+          "Clouds"
+        ],
+        "operationId": "editCloudById",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "adplication/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Cloud"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Успешный ответ по изменению данных сервера",
+            "content": {
+              "adplication/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Cloud"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Все остальное",
+            "content": {
+              "adplication/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/clouds/{idCloud}": {
+      "delete": {
+        "summary": "Удаление сервера по id",
+        "operationId": "deleteCloudById",
+        "tags": [
+          "Clouds"
+        ],
+        "parameters": [
+          {
+            "name": "idCloud",
+            "in": "path",
+            "required": true,
+            "description": "id Сервера",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Успешное удаление сервера",
+            "content": {
+              "adplication/json": {}
+            }
+          },
+          "default": {
+            "description": "Все остальное",
+            "content": {
+              "adplication/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Client": {
+        "type": "object",
+        "required": [
+          "idClient",
+          "email",
+          "hashPassword"
+        ],
+        "properties": {
+          "idClient": {
+            "type": "integer",
+            "example": 1,
+            "description": "id клиента"
+          },
+          "email": {
+            "type": "string",
+            "example": "example@example.ru",
+            "description": "email клиента"
+          },
+          "hashPassword": {
+            "type": "string"
+          }
+        }
+      },
+      "Clients": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/Client"
+        }
+      },
+      "Error": {
+        "type": "object",
+        "required": [
+          "codError",
+          "messageError"
+        ],
+        "properties": {
+          "codError": {
+            "type": "string",
+            "example": "123qwe456"
+          },
+          "messageError": {
+            "type": "string"
+          }
+        }
+      },
+      "Cloud": {
+        "type": "object",
+        "required": [
+          "RAM",
+          "CPU",
+          "SSD",
+          "OS",
+          "idServer"
+        ],
+        "properties": {
+          "idServer": {
+            "type": "integer",
+            "example": 1
+          },
+          "RAM": {
+            "type": "integer",
+            "example": 256
+          },
+          "CPU": {
+            "type": "integer",
+            "example": 8
+          },
+          "SSD": {
+            "type": "integer",
+            "example": 1024
+          },
+          "OS": {
+            "type": "string",
+            "enum": [
+              "Windows",
+              "Linux"
+            ]
+          }
+        }
+      },
+      "Clouds": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/Cloud"
+        }
+      }
+    }
+  }
+}
